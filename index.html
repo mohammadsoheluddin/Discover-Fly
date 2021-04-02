@@ -50,21 +50,21 @@
             </div>
             <div class="input-group f-class">
                 <div>
-                    <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <label for="" id="first-price">First Class ($150)</label>
+                    <input id="firstClass-count" type="number" class="inp-style inp-width" name="" value="1">
                 </div>
                 <div class="plus-minus-btn">
-                    <p>+ -</p>
+                    <p> <span id="firstClass-ticket-increase">+</span> <span id="firstClass-ticket-decrease">-</span> </p>
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
-                    <label for="">Economy ($100)</label>
+                    <label for="" id="economy-price">Economy ($100)</label>
                     <input class="inp-style inp-width" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                    <p> <span id="economy-class-ticket-increase">+</span> <span id="economy-class-ticket-decrease">-</span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -105,6 +105,25 @@
     </section>
 
     <!--Thank You-->
+    <script>
+        document.getElementById('firstClass-ticket-increase').addEventListener('click', function(){
+            const firstClassInput = document.getElementById('firstClass-count');
+            const firstClassCount = parseInt(firstClassInput.value);
+            const firstClassNewCount = firstClassCount + 1;
+            firstClassInput.value = firstClassNewCount;
+            const firstClassTotal = firstClassNewCount * 150;
+            document.getElementById('first-price').innerText = 'First Class' + ' ' + '$' + firstClassTotal;
+        });
+
+        document.getElementById('firstClass-ticket-decrease').addEventListener('click', function(){
+            const firstClassInput = document.getElementById('firstClass-count');
+            const firstClassCount = parseInt(firstClassInput.value);
+            const firstClassNewCount = firstClassCount - 1;
+            firstClassInput.value = firstClassNewCount;
+            const firstClassTotal = firstClassNewCount * 150;
+            document.getElementById('first-price').innerText = 'First Class' + ' ' + '$' + firstClassTotal;
+        })
+    </script>
 </body>
 
 </html>

@@ -63,7 +63,7 @@ nav ul li a:hover, a.active{
     align-items: center;
 }
 .inp-width{
-    min-width: 300px;
+    min-width: 280px;
 }
 .plus-minus-btn{
     color: #3352F2;
@@ -88,6 +88,7 @@ nav ul li a:hover, a.active{
     background: #F3F5FF;
     border-radius: 4px;
     margin: 10px 0;
+    text-align: center;
 }
 .booking-form .inputs{
     display: grid;
