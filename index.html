@@ -50,21 +50,21 @@
             </div>
             <div class="input-group f-class">
                 <div>
-                    <label for="" id="first-price">First Class ($150)</label>
+                    <label for="" id="firstClass-total">First Class ($150)</label>
                     <input id="firstClass-count" type="number" class="inp-style inp-width" name="" value="1">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span id="firstClass-ticket-increase">+</span> <span id="firstClass-ticket-decrease">-</span> </p>
+                    <p> <span onclick="airTicketChange('firstClass', true)">+</span> <span onclick="airTicketChange('firstClass', false)">-</span> </p>
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
-                    <label for="" id="economy-price">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <label for="" id="economyClass-total">Economy ($100)</label>
+                    <input id="economyClass-count" type ="number" class="inp-style inp-width" name="" value="1">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span id="economy-class-ticket-increase">+</span> <span id="economy-class-ticket-decrease">-</span> </p>
+                    <p> <span onclick="airTicketChange('economyClass', true)">+</span> <span onclick="airTicketChange('economyClass', false)">-</span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -106,23 +106,78 @@
 
     <!--Thank You-->
     <script>
-        document.getElementById('firstClass-ticket-increase').addEventListener('click', function(){
-            const firstClassInput = document.getElementById('firstClass-count');
-            const firstClassCount = parseInt(firstClassInput.value);
-            const firstClassNewCount = firstClassCount + 1;
-            firstClassInput.value = firstClassNewCount;
-            const firstClassTotal = firstClassNewCount * 150;
-            document.getElementById('first-price').innerText = 'First Class' + ' ' + '$' + firstClassTotal;
-        });
+        function airTicketChange(ticket, isIncrease){
+            const ticketInput = document.getElementById(ticket + '-count');
+            const ticketCount = parseInt(ticketInput.value);
+            let ticketNewCount = ticketCount;
+            if(isIncrease == true) {
+                ticketNewCount = ticketCount + 1;
+            }
+            if(isIncrease == false && ticketCount > 0) {
+                ticketNewCount = ticketCount - 1;
+            }
+            ticketInput.value = ticketNewCount;
+            let ticketTotal = 0;
+            if(ticket == 'firstClass'){
+                ticketTotal = ticketNewCount * 150;
+            }
+            if(ticket == 'economyClass'){
+                ticketTotal = ticketNewCount * 100;
+            }
+            document.getElementById(ticket + '-total').innerText = '$' + ticketTotal;
+        };
 
-        document.getElementById('firstClass-ticket-decrease').addEventListener('click', function(){
-            const firstClassInput = document.getElementById('firstClass-count');
-            const firstClassCount = parseInt(firstClassInput.value);
-            const firstClassNewCount = firstClassCount - 1;
-            firstClassInput.value = firstClassNewCount;
-            const firstClassTotal = firstClassNewCount * 150;
-            document.getElementById('first-price').innerText = 'First Class' + ' ' + '$' + firstClassTotal;
-        })
+
+
+        // function firstClassTicketChange(isIncrease){
+        //     const firstClassInput = document.getElementById('firstClass-count');
+        //     const firstClassCount = parseInt(firstClassInput.value);
+        //     let firstClassNewCount = firstClassCount;
+        //     if(isIncrease == true) {
+        //         firstClassNewCount = firstClassCount + 1;
+        //     }
+        //     if(isIncrease == false && firstClassCount > 0) {
+        //         firstClassNewCount = firstClassCount - 1;
+        //     }
+        //     firstClassInput.value = firstClassNewCount;
+        //     const firstClassTotal = firstClassNewCount * 150;
+        //     document.getElementById('first-price').innerText = 'First Class' + ' ' + '$' + firstClassTotal;
+        // };
+
+        // function economyClassTicketChange(isIncrease){
+        //     const economyClassInput = document.getElementById('economyClass-count');
+        //     const economyClassCount = parseInt(economyClassInput.value);
+        //     let economyClassNewCount = economyClassCount;
+        //     if(isIncrease == true) {
+        //         economyClassNewCount = economyClassCount + 1;
+        //     }
+        //     if(isIncrease == false && economyClassCount > 0) {
+        //         economyClassNewCount = economyClassCount - 1;
+        //     }
+        //     economyClassInput.value = economyClassNewCount;
+        //     const economyClassTotal = economyClassNewCount * 100;
+        //     document.getElementById('economy-price').innerText = 'Economy Class' + ' ' + '$' + economyClassTotal;
+        // };
+        
+        
+
+        // document.getElementById('firstClass-ticket-increase').addEventListener('click', function(){
+        //     const firstClassInput = document.getElementById('firstClass-count');
+        //     const firstClassCount = parseInt(firstClassInput.value);
+        //     const firstClassNewCount = firstClassCount + 1;
+        //     firstClassInput.value = firstClassNewCount;
+        //     const firstClassTotal = firstClassNewCount * 150;
+        //     document.getElementById('first-price').innerText = 'First Class' + ' ' + '$' + firstClassTotal;
+        // });
+
+        // document.getElementById('firstClass-ticket-decrease').addEventListener('click', function(){
+        //     const firstClassInput = document.getElementById('firstClass-count');
+        //     const firstClassCount = parseInt(firstClassInput.value);
+        //     const firstClassNewCount = firstClassCount - 1;
+        //     firstClassInput.value = firstClassNewCount;
+        //     const firstClassTotal = firstClassNewCount * 150;
+        //     document.getElementById('first-price').innerText = 'First Class' + ' ' + '$' + firstClassTotal;
+        // });
     </script>
 </body>
 

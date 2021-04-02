@@ -88,6 +88,8 @@ nav ul li a:hover, a.active{
     background: #F3F5FF;
     border-radius: 4px;
     margin: 10px 0;
+}
+input{
     text-align: center;
 }
 .booking-form .inputs{
